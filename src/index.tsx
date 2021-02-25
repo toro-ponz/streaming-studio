@@ -1,10 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import UserForm from './components/UserForm';
+import Store from './store';
 
 const container = document.getElementById('contents');
 
-ReactDOM.render(<p>Hello, world!</p>, container);
-
-window.echo.hello();
-
-window.app.quit();
+ReactDom.render(
+  <Provider store={Store}>
+    <UserForm />
+  </Provider>,
+  container,
+);
