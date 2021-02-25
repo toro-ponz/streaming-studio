@@ -15,7 +15,6 @@
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
-    "custom-electron-titlebar": "^3.2.6",
     "eslint-loader": "^4.0.2",
     "html-webpack-plugin": "^5.2.0",
     "react": "^17.0.1",
