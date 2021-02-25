@@ -10,7 +10,9 @@
     "start": "electron ./dist/app.js",
     "build": "tsc && webpack",
     "build:main": "tsc",
-    "build:render": "webpack"
+    "build:render": "webpack",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
     "eslint-loader": "^4.0.2",
