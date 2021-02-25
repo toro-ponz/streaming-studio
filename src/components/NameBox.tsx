@@ -1,4 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
+import TextField from '@material-ui/core/TextField';
 
 interface IProps {
   label: string;
@@ -21,16 +22,15 @@ const NameBox: React.FC<IProps> = props => {
   return (
     <>
       <span>
-        {label}
-        <input
+        <TextField
+          id="standard-basic"
+          label={label}
           name="username"
           type={props.type}
           value={props.value}
           onChange={onValueChange}
         />
       </span>
-      <br />
-      <span>{props.value}</span>
     </>
   );
 };

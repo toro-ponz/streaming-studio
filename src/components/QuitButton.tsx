@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 interface IProps {
   label: string;
@@ -7,9 +8,9 @@ interface IProps {
 
 const QuitButton: React.FC<IProps> = props => {
   return (
-    <>
-      <button onClick={props.onClick}>{props.label}</button>
-    </>
+    <Button variant="outlined" color="secondary" onClick={props.onClick}>
+      {props.label}
+    </Button>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 interface IProps {
   count: number;
@@ -9,7 +10,9 @@ interface IProps {
 const CountButton: React.FC<IProps> = props => {
   return (
     <>
-      <button onClick={props.onClick}>{props.label}</button>
+      <Button variant="contained" color="primary" onClick={props.onClick}>
+        {props.label}
+      </Button>
       <span style={{ marginLeft: '1em' }}>{props.count}</span>
     </>
   );

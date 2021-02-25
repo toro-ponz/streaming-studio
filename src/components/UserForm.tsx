@@ -29,6 +29,8 @@ const UserForm: React.FC = () => {
       </p>
       <p>
         <CountButton count={count} label="訪問" onClick={onCountClick} />
+      </p>
+      <p>
         <QuitButton label="Quit" onClick={onQuitClick} />
       </p>
     </div>
