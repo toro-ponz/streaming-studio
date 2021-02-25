@@ -3,11 +3,11 @@ import { app, BrowserWindow } from 'electron';
 const createWindow = (): void => {
   const win = new BrowserWindow({
     width: 1200,
-    height: 600,
+    height: 860,
+    frame: false,
     webPreferences: {
-      nodeIntegration: false,
-      nodeIntegrationInWorker: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
 
