@@ -1,29 +1,29 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeUserAction } from '../actions/UserActions';
-import { IState } from '../states/IState';
+import IState from '../states/IState';
 import IUser from '../states/IUser';
-import CountButton from './CountButton';
-import ExitButton from './ExitButton';
-import NameBox from './NameBox';
+import CountButton from '../components/CountButton';
+import ExitButton from '../components/ExitButton';
+import NameBox from '../components/NameBox';
 import styled from 'styled-components';
 
 const Div = styled.div`
   height: 98%;
   width: 98%;
-  background: #1c212e;
+  color: ${(props): string => props.theme.textColor};
+  background-color: ${(props): string => props.theme.backgroundColor};
   padding: 1%;
-  color: white;
   flex-grow: 1;
 `;
 
 const UserForm: React.FC = () => {
-  const { name, count } = useSelector<IState, IUser>(a => a.user);
+  const { name, count } = useSelector<IState, IUser>(state => state.user);
   const dispatch = useDispatch();
-  const onNameChange = useCallback((value: string) => {
+  const onNameChange = React.useCallback((value: string) => {
     dispatch(changeUserAction({ name: value }));
   }, []);
-  const onCountClick = useCallback(() => {
+  const onCountClick = React.useCallback(() => {
     dispatch(changeUserAction({ count: count + 1 }));
   }, [count]);
   return (

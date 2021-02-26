@@ -1,5 +1,7 @@
+import ITheme from './ITheme';
 import IUser from './IUser';
 
-export interface IState {
+export default interface IState {
   user: IUser;
+  theme: ITheme;
 }
