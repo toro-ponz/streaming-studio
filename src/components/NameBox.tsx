@@ -20,18 +20,16 @@ const NameBox: React.FC<IProps> = props => {
     [props.onChangeText],
   );
   return (
-    <>
-      <span>
-        <TextField
-          id="standard-basic"
-          label={label}
-          name="username"
-          type={props.type}
-          value={props.value}
-          onChange={onValueChange}
-        />
-      </span>
-    </>
+    <div>
+      <TextField
+        id="standard-basic"
+        label={label}
+        name="username"
+        type={props.type}
+        value={props.value}
+        onChange={onValueChange}
+      />
+    </div>
   );
 };
 

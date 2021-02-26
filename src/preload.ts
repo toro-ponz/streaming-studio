@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld('echo', {
 });
 
 contextBridge.exposeInMainWorld('app', {
-  quit: async () => {
-    await ipcRenderer.invoke('quit');
+  exit: async () => {
+    await ipcRenderer.invoke('exit');
   },
 });

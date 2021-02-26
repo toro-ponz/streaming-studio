@@ -4,8 +4,18 @@ import { changeUserAction } from '../actions/UserActions';
 import { IState } from '../states/IState';
 import IUser from '../states/IUser';
 import CountButton from './CountButton';
-import QuitButton from './QuitButton';
+import ExitButton from './ExitButton';
 import NameBox from './NameBox';
+import styled from 'styled-components';
+
+const Div = styled.div`
+  height: 98%;
+  width: 98%;
+  background: #1c212e;
+  padding: 1%;
+  color: white;
+  flex-grow: 1;
+`;
 
 const UserForm: React.FC = () => {
   const { name, count } = useSelector<IState, IUser>(a => a.user);
@@ -16,24 +26,17 @@ const UserForm: React.FC = () => {
   const onCountClick = useCallback(() => {
     dispatch(changeUserAction({ count: count + 1 }));
   }, [count]);
-  const onQuitClick = useCallback(() => window.app.quit(), []);
   return (
-    <div>
-      <p>
-        <NameBox
-          value={name}
-          label="ユーザー名"
-          type="text"
-          onChangeText={onNameChange}
-        />
-      </p>
-      <p>
-        <CountButton count={count} label="訪問" onClick={onCountClick} />
-      </p>
-      <p>
-        <QuitButton label="Quit" onClick={onQuitClick} />
-      </p>
-    </div>
+    <Div>
+      <NameBox
+        value={name}
+        label="ユーザー名"
+        type="text"
+        onChangeText={onNameChange}
+      />
+      <CountButton count={count} label="訪問" onClick={onCountClick} />
+      <ExitButton />
+    </Div>
   );
 };
 

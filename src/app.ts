@@ -5,6 +5,7 @@ const createWindow = (): void => {
   const win = new BrowserWindow({
     width: 1200,
     height: 850,
+    frame: false,
     webPreferences: {
       worldSafeExecuteJavaScript: true,
       nodeIntegration: false,
@@ -38,6 +39,6 @@ ipcMain.handle('echo', async (_event, message: string) => {
   });
 });
 
-ipcMain.handle('quit', async () => {
-  app.quit();
+ipcMain.handle('exit', async () => {
+  app.exit();
 });

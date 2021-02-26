@@ -8,7 +8,7 @@ declare global {
 }
 
 export interface App {
-  quit: () => Promise<void>;
+  exit: () => Promise<void>;
 }
 
 export interface Echo {
