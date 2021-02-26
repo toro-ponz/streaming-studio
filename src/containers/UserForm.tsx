@@ -11,8 +11,8 @@ import IUser from '../states/IUser';
 const Div = styled.div`
   height: 98%;
   width: 98%;
-  color: ${(props): string => props.theme.textColor};
-  background-color: ${(props): string => props.theme.backgroundColor};
+  color: ${(props): string => props.theme.primaryTextColor};
+  background-color: ${(props): string => props.theme.primaryBackgroundColor};
   padding: 1%;
   flex-grow: 1;
 `;

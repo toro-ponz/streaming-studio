@@ -1,5 +1,6 @@
 import * as path from 'path';
 import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { electron } from 'webpack';
 
 const createWindow = (): void => {
   const win = new BrowserWindow({
@@ -13,6 +14,7 @@ const createWindow = (): void => {
       nodeIntegration: false,
       nodeIntegrationInWorker: false,
       contextIsolation: true,
+      enableRemoteModule: false,
       preload: path.join(__dirname, './preload.js'),
     },
   });
@@ -41,6 +43,9 @@ ipcMain.handle('echo', async (_event, message: string) => {
   });
 });
 
+ipcMain.handle('minimize', async () => {
+  electron.get
+});
 ipcMain.handle('exit', async () => {
   app.exit();
 });

@@ -11,8 +11,8 @@ import ITheme from '../states/ITheme';
 
 const Div = styled.div`
   height: 100%;
-  color: ${(props): string => props.theme.textColor};
-  background-color: ${(props): string => props.theme.backgroundColor};
+  color: ${(props): string => props.theme.commonTextColor};
+  background-color: ${(props): string => props.theme.commonBackgroundColor};
 `;
 
 interface IProps {

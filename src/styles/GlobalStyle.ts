@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     width: 100vw;
     margin: 0;
+    overflow: hidden;
   }
 
   p, span, label {
@@ -14,8 +15,8 @@ const GlobalStyle = createGlobalStyle`
   #container {
     width: 100%;
     height: 100%;
-    background-color: ${(props): string => props.theme.backgroundColor};
-    color: ${(props): string => props.theme.textColor};
+    background-color: ${(props): string => props.theme.primaryBackgroundColor};
+    color: ${(props): string => props.theme.primaryTextColor};
   }
 `;
 

@@ -9,13 +9,15 @@ import GlobalStyle from '../styles/GlobalStyle';
 import DarkTheme from '../styles/themes/DarkTheme';
 import LightTheme from '../styles/themes/LightTheme';
 import Sidebar from './Sidebar';
+import Titlebar from './Titlebar';
 import UserForm from './UserForm';
 
 const FlexDiv = styled.div`
   display: flex;
   height: 100%;
-  color: ${(props): string => props.theme.textColor};
-  background-color: ${(props): string => props.theme.backgroundColor};
+  overflow: hidden;
+  color: ${(props): string => props.theme.primaryTextColor};
+  background-color: ${(props): string => props.theme.primaryBackgroundColor};
 `;
 
 const App: React.FC = () => {
@@ -24,6 +26,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme.name !== 'light' ? DarkTheme : LightTheme}>
       <>
         <GlobalStyle />
+
+        <Titlebar title="Hello, world!" />
         <FlexDiv>
           <Sidebar collapsed={false} />
           <UserForm />

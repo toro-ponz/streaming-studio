@@ -1,4 +1,7 @@
 export interface ITheme {
-  backgroundColor: string;
-  textColor: string;
+  commonBackgroundColor: string;
+  commonTextColor: string;
+  primaryBackgroundColor: string;
+  primaryTextColor: string;
+  accentColor: string;
 }
