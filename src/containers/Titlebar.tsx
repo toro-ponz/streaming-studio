@@ -1,6 +1,7 @@
-import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 import React from 'react';
 import styled from 'styled-components';
+import HoverIconButton from '../components/HoverIconButton';
 
 const TitlebarHeader = styled.header`
   width: 100%;
@@ -17,10 +18,13 @@ const TitlebarHeader = styled.header`
   align-items: center;
 `;
 
-const ApplicationIconBox = styled.div``;
+const ApplicationIconBox = styled.div`
+  order: 1;
+  padding: 0.25rem;
+`;
 
 const TitleBox = styled.div`
-  order: 1;
+  order: 2;
   flex-grow: 1;
   -webkit-app-region: drag;
 `;
@@ -34,7 +38,7 @@ const ControllsBox = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  order: 2;
+  order: 3;
   flex-grow: 0;
 `;
 
@@ -45,14 +49,17 @@ interface IProps {
 }
 
 const Titlebar: React.FC<IProps> = props => {
-  const minimize = () => window.app.exit();
-  const maximize = () => window.app.exit();
-  const restore = () => window.app.exit();
-  const close = () => window.app.exit();
+  const minimize = () => window.app.minimize();
+  const maximize = () => window.app.maximize();
+  const restore = () => window.app.restore();
+  const close = () => {
+    console.log('ya');
+    window.app.close();
+  };
   return (
     <TitlebarHeader>
       <ApplicationIconBox>
-        <IconButton></IconButton>
+        <Icon></Icon>
       </ApplicationIconBox>
 
       <TitleBox>
@@ -60,30 +67,21 @@ const Titlebar: React.FC<IProps> = props => {
       </TitleBox>
 
       <ControllsBox>
-        <IconButton aria-label="minimize" onClick={minimize}>
-          <IconImage
-            srcSet="../assets/icons/min-w-10.png 1x, ../assets/icons/min-w-12.png 1.25x, ../assets/icons/min-w-15.png 1.5x, ../assets/icons/min-w-15.png 1.75x, ../assets/icons/min-w-20.png 2x, ../assets/icons/min-w-20.png 2.25x, ../assets/icons/min-w-24.png 2.5x, ../assets/icons/min-w-30.png 3x, ../assets/icons/min-w-30.png 3.5x"
-            draggable="false"
-          />
-        </IconButton>
-        <IconButton aria-label="maximize" onClick={maximize}>
-          <IconImage
-            srcSet="../assets/icons/max-w-10.png 1x, ../assets/icons/max-w-12.png 1.25x, ../assets/icons/max-w-15.png 1.5x, ../assets/icons/max-w-15.png 1.75x, ../assets/icons/max-w-20.png 2x, ../assets/icons/max-w-20.png 2.25x, ../assets/icons/max-w-24.png 2.5x, ../assets/icons/max-w-30.png 3x, ../assets/icons/max-w-30.png 3.5x"
-            draggable="false"
-          />
-        </IconButton>
-        <IconButton aria-label="restore" onClick={restore}>
-          <IconImage
-            srcSet="../assets/icons/restore-w-10.png 1x, ../assets/icons/restore-w-12.png 1.25x, ../assets/icons/restore-w-15.png 1.5x, ../assets/icons/restore-w-15.png 1.75x, ../assets/icons/restore-w-20.png 2x, ../assets/icons/restore-w-20.png 2.25x, ../assets/icons/restore-w-24.png 2.5x, ../assets/icons/restore-w-30.png 3x, ../assets/icons/restore-w-30.png 3.5x"
-            draggable="false"
-          />
-        </IconButton>
-        <IconButton aria-label="close" onClick={close}>
-          <IconImage
-            srcSet="../assets/icons/close-w-10.png 1x, ../assets/icons/close-w-12.png 1.25x, ../assets/icons/close-w-15.png 1.5x, ../assets/icons/close-w-15.png 1.75x, ../assets/icons/close-w-20.png 2x, ../assets/icons/close-w-20.png 2.25x, ../assets/icons/close-w-24.png 2.5x, ../assets/icons/close-w-30.png 3x, ../assets/icons/close-w-30.png 3.5x"
-            draggable="false"
-          />
-        </IconButton>
+        <HoverIconButton label="minimize" onClick={minimize}>
+          <IconImage srcSet="../assets/icons/min-w-10.png 1x, ../assets/icons/min-w-12.png 1.25x, ../assets/icons/min-w-15.png 1.5x, ../assets/icons/min-w-15.png 1.75x, ../assets/icons/min-w-20.png 2x, ../assets/icons/min-w-20.png 2.25x, ../assets/icons/min-w-24.png 2.5x, ../assets/icons/min-w-30.png 3x, ../assets/icons/min-w-30.png 3.5x" />
+        </HoverIconButton>
+        <HoverIconButton label="maximize" onClick={maximize}>
+          <IconImage srcSet="../assets/icons/max-w-10.png 1x, ../assets/icons/max-w-12.png 1.25x, ../assets/icons/max-w-15.png 1.5x, ../assets/icons/max-w-15.png 1.75x, ../assets/icons/max-w-20.png 2x, ../assets/icons/max-w-20.png 2.25x, ../assets/icons/max-w-24.png 2.5x, ../assets/icons/max-w-30.png 3x, ../assets/icons/max-w-30.png 3.5x" />
+        </HoverIconButton>
+        <HoverIconButton label="restore" onClick={restore}>
+          <IconImage srcSet="../assets/icons/restore-w-10.png 1x, ../assets/icons/restore-w-12.png 1.25x, ../assets/icons/restore-w-15.png 1.5x, ../assets/icons/restore-w-15.png 1.75x, ../assets/icons/restore-w-20.png 2x, ../assets/icons/restore-w-20.png 2.25x, ../assets/icons/restore-w-24.png 2.5x, ../assets/icons/restore-w-30.png 3x, ../assets/icons/restore-w-30.png 3.5x" />
+        </HoverIconButton>
+        <HoverIconButton
+          label="close"
+          onClick={close}
+          hoverBackground="rgba(255, 0, 0, 0.5)">
+          <IconImage srcSet="../assets/icons/close-w-10.png 1x, ../assets/icons/close-w-12.png 1.25x, ../assets/icons/close-w-15.png 1.5x, ../assets/icons/close-w-15.png 1.75x, ../assets/icons/close-w-20.png 2x, ../assets/icons/close-w-20.png 2.25x, ../assets/icons/close-w-24.png 2.5x, ../assets/icons/close-w-30.png 3x, ../assets/icons/close-w-30.png 3.5x" />
+        </HoverIconButton>
       </ControllsBox>
     </TitlebarHeader>
   );

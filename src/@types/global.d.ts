@@ -1,5 +1,3 @@
-import { App } from 'electron';
-
 declare global {
   interface Window {
     app: App;
@@ -8,6 +6,10 @@ declare global {
 }
 
 export interface App {
+  minimize: () => Promise<void>;
+  maximize: () => Promise<void>;
+  restore: () => Promise<void>;
+  close: () => Promise<void>;
   exit: () => Promise<void>;
 }
 

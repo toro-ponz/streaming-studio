@@ -1,9 +1,10 @@
 import * as path from 'path';
 import { app, BrowserWindow, dialog, ipcMain } from 'electron';
-import { electron } from 'webpack';
+
+let win: BrowserWindow | null = null;
 
 const createWindow = (): void => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1200,
     minWidth: 400,
     height: 850,
@@ -44,8 +45,24 @@ ipcMain.handle('echo', async (_event, message: string) => {
 });
 
 ipcMain.handle('minimize', async () => {
-  electron.get
+  win?.minimize();
 });
+
+ipcMain.handle('maximize', async () => {
+  win?.maximize();
+});
+
+ipcMain.handle('restore', async () => {
+  win?.restore();
+});
+
+ipcMain.handle('close', async () => {
+  if (win?.webContents.isDevToolsOpened()) {
+    win?.webContents.closeDevTools();
+  }
+  win?.close();
+});
+
 ipcMain.handle('exit', async () => {
   app.exit();
 });
