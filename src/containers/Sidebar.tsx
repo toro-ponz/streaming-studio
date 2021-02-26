@@ -1,12 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import 'react-pro-sidebar/dist/css/styles.css';
+
+import { changeThemeAction } from '../actions/ThemeActions';
+import ToggleButton from '../components/ToggleButton';
 import IState from '../states/IState';
 import ITheme from '../states/ITheme';
-import ToggleButton from '../components/ToggleButton';
-import { changeThemeAction } from '../actions/ThemeActions';
 
 const Div = styled.div`
   height: 100%;

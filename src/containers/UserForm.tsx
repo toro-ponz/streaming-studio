@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { changeUserAction } from '../actions/UserActions';
-import IState from '../states/IState';
-import IUser from '../states/IUser';
 import CountButton from '../components/CountButton';
 import ExitButton from '../components/ExitButton';
 import NameBox from '../components/NameBox';
-import styled from 'styled-components';
+import IState from '../states/IState';
+import IUser from '../states/IUser';
 
 const Div = styled.div`
   height: 98%;

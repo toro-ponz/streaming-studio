@@ -1,15 +1,15 @@
+import { App } from 'electron';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 
-import Sidebar from './Sidebar';
-import UserForm from './UserForm';
-import GlobalStyle from '../styles/GlobalStyle';
-import LightTheme from '../styles/themes/LightTheme';
-import DarkTheme from '../styles/themes/DarkTheme';
 import IState from '../states/IState';
 import ITheme from '../states/ITheme';
-import { App } from 'electron';
+import GlobalStyle from '../styles/GlobalStyle';
+import DarkTheme from '../styles/themes/DarkTheme';
+import LightTheme from '../styles/themes/LightTheme';
+import Sidebar from './Sidebar';
+import UserForm from './UserForm';
 
 const FlexDiv = styled.div`
   display: flex;

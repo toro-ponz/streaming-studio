@@ -1,10 +1,12 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import * as path from 'path';
+import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 
 const createWindow = (): void => {
   const win = new BrowserWindow({
     width: 1200,
+    minWidth: 400,
     height: 850,
+    minHeight: 400,
     frame: false,
     webPreferences: {
       worldSafeExecuteJavaScript: true,

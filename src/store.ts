@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux';
-import IState from './states/IState';
-import userReducer from './reducers/UserReducer';
 import themeReducer from './reducers/ThemeReducer';
+import userReducer from './reducers/UserReducer';
+import IState from './states/IState';
 
 const combinedReducer = combineReducers<IState>({
   user: userReducer,
