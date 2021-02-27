@@ -21,3 +21,21 @@ yarn build
 ```shell
 yarn start
 ```
+
+### 4. Check lint before commit
+
+```shell
+yarn lint
+```
+
+and fix if lint failed.
+
+```shell
+yarn lint:fix
+```
+
+## Packaging
+
+```shell
+yarn package
+```
