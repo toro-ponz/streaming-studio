@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { app, BrowserWindow, desktopCapturer, dialog, ipcMain } from 'electron';
+import { ICaptureSource } from './domain/Capture';
 
 let win: BrowserWindow | null = null;
 
@@ -65,4 +66,50 @@ ipcMain.handle('close', async () => {
 
 ipcMain.handle('exit', async () => {
   app.exit();
+});
+
+ipcMain.handle(
+  'get-capture-sources',
+  async (): Promise<ICaptureSource[]> => {
+    const sources = await desktopCapturer.getSources({
+      types: ['window', 'screen'],
+    });
+
+    return sources.map(source => {
+      return {
+        id: source.id,
+        displayId: source.display_id,
+        name: source.name,
+      };
+    });
+  },
+);
+
+ipcMain.handle('stream', async () => {
+  desktopCapturer
+    .getSources({ types: ['window', 'screen'] })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    .then(async _sources => {
+      // for (const source of sources) {
+      // if (source.name === 'Electron') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const mediaDevices = navigator.mediaDevices as any;
+      const stream = mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          mandatory: {
+            chromeMediaSource: 'desktop',
+            // chromeMediaSourceId: source.id,
+          },
+        },
+      });
+
+      console.log(stream);
+
+      win?.webContents.send('capture-stream', stream);
+
+      // return;
+      // }
+      // }
+    });
 });

@@ -7,9 +7,9 @@ const TitlebarHeader = styled.header`
   width: 100%;
   min-width: 100%;
   max-width: 100%;
-  height: 36px;
-  min-height: 36px;
-  max-height: 36px;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
   color: ${(props): string => props.theme.commonTextColor};
   background-color: ${(props): string => props.theme.commonBackgroundColor};
   display: flex;
@@ -20,6 +20,7 @@ const TitlebarHeader = styled.header`
 
 const ApplicationIconBox = styled.div`
   order: 1;
+  flex-grow: 0;
   padding: 0.25rem;
 `;
 
@@ -52,10 +53,7 @@ const Titlebar: React.FC<IProps> = props => {
   const minimize = () => window.app.minimize();
   const maximize = () => window.app.maximize();
   const restore = () => window.app.restore();
-  const close = () => {
-    console.log('ya');
-    window.app.close();
-  };
+  const close = () => window.app.close();
   return (
     <TitlebarHeader>
       <ApplicationIconBox>

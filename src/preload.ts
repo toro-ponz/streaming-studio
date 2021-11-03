@@ -1,4 +1,5 @@
-import { contextBridge, ipcRenderer } from 'electron';
+import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { ICaptureSource } from './domain/Capture';
 
 contextBridge.exposeInMainWorld('app', {
   minimize: async () => {
@@ -25,4 +26,18 @@ contextBridge.exposeInMainWorld('echo', {
   message: async (message: string) => {
     await ipcRenderer.invoke('echo', message);
   },
+});
+
+contextBridge.exposeInMainWorld('capture', {
+  getSources: async (): Promise<ICaptureSource[]> => {
+    return ipcRenderer.invoke('get-capture-sources');
+  },
+  stream: async () => {
+    await ipcRenderer.invoke('stream');
+  },
+  onCaptureStream: (listener: (stream: MediaStream) => void) =>
+    ipcRenderer.on(
+      'capture-stream',
+      (_event: IpcRendererEvent, stream: MediaStream) => listener(stream),
+    ),
 });
